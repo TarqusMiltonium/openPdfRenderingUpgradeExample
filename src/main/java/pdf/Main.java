@@ -29,8 +29,7 @@ public class Main {
 
             ITextRenderer renderer = new ITextRenderer();
 
-            ITextUserAgent userAgent = new ITextUserAgent(renderer.getOutputDevice());
-            userAgent.setSharedContext(renderer.getSharedContext());
+            ITextUserAgent userAgent = new ITextUserAgent(renderer.getOutputDevice(), Math.round(renderer.getOutputDevice().getDotsPerPoint()));
             renderer.getSharedContext().setUserAgentCallback(userAgent);
 
             renderer.setDocument(document, null);
