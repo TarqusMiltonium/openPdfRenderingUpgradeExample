@@ -17,11 +17,13 @@ import java.net.URI;
 public class Main {
     public static void main(String[] args) {
         try {
+            String flyingsaucerVersion = "9.10.2";
+
             InputStream htmlStream = Main.class.getClassLoader().getResourceAsStream("html/example.html");
             String htmlContent = new String(htmlStream.readAllBytes());
 
             URI mainUri = Main.class.getProtectionDomain().getCodeSource().getLocation().toURI();
-            String outputPath = new File(mainUri).getPath() + "/convertedFromHtml.pdf";
+            String outputPath = new File(new File(mainUri).getPath() + "/../../src/test/results/output_Flyingsaucer_v" + flyingsaucerVersion + ".pdf").getCanonicalPath();
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
